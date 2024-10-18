@@ -1,14 +1,14 @@
 export {
-  type CountryInfo,
-  type CountryInfoResponse
-} from './country-info.interface';
+  type CountryData,
+  type CountryDataResponse
+} from './country-data.interface';
 
 export {
   type FoodSecurity,
   type FoodSecurityResponse
 } from './food-security.interface';
 
-export { type IpcPeak, type IpcPeaksResponse } from './ipc-peak.interface';
+export { type IpcPeakData, type IpcPeaksResponse } from './ipc-peak.interface';
 
 export {
   type ClimateDataResponse,

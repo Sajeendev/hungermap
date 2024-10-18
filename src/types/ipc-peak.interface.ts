@@ -1,4 +1,4 @@
-export interface IpcPeak {
+interface IpcPeak {
   iso3: string;
   country_name: string;
   analysis_type: string;
@@ -17,10 +17,12 @@ export interface IpcPeak {
   source: string;
 }
 
+export interface IpcPeakData {
+  year: number;
+  ipc_peaks: IpcPeak[];
+}
+
 export interface IpcPeaksResponse {
   statusCode: string;
-  body: {
-    year: number;
-    ipc_peaks: IpcPeak[];
-  };
+  body: IpcPeakData;
 }

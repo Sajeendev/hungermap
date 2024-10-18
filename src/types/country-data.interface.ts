@@ -10,7 +10,7 @@ interface IncomeGroup {
   level: string;
 }
 
-export interface CountryInfo {
+interface CountryInfo {
   country: Country;
   population: Population;
   chronic_hunger: number;
@@ -18,9 +18,11 @@ export interface CountryInfo {
   income_group: IncomeGroup;
 }
 
-export interface CountryInfoResponse {
+export interface CountryData {
+  countries: CountryInfo[];
+}
+
+export interface CountryDataResponse {
   statusCode: string;
-  body: {
-    countries: CountryInfo[];
-  };
+  body: CountryData;
 }
