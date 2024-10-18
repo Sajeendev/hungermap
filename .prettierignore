@@ -1,0 +1,14 @@
+
+.cache/**
+.npm/**
+.husky/**
+.git/
+coverage/
+
+node_modules/**
+
+package*
+
+*.log
+*.bak
+*.tmp
