@@ -1,4 +1,4 @@
-export interface Hazard {
+interface Hazard {
   severity: string;
   type: string;
   name: string;
@@ -8,9 +8,11 @@ export interface Hazard {
   lastUpdate: string;
 }
 
+export interface HazardData {
+  hazards: Hazard[];
+}
+
 export interface HazardsResponse {
   statusCode: string;
-  body: {
-    hazards: Hazard[];
-  };
+  body: HazardData;
 }

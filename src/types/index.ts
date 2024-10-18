@@ -12,4 +12,4 @@ export {
   type ClimateDataResponse
 } from './climate.interface';
 
-export { type Hazard, type HazardsResponse } from './hazard.interface';
+export { type HazardData, type HazardsResponse } from './hazard.interface';
