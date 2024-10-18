@@ -1,10 +1,14 @@
 import { BASE_URL } from '@/constants';
-import { CountryData, CountryDataResponse } from '@/types';
+import { FoodSecurity, FoodSecurityResponse } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const useGetCountries = () => {
-  const [data, setData] = useState<CountryData | null>(null);
+interface Props {
+  Iso3Code: string;
+}
+
+const useGetFoodSecurityByCountry = ({ Iso3Code }: Props) => {
+  const [data, setData] = useState<FoodSecurity | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<unknown>(null);
 
@@ -14,8 +18,8 @@ const useGetCountries = () => {
       setError(null);
 
       try {
-        const response: CountryDataResponse = await axios.get(
-          `${BASE_URL}/v2/info/country`
+        const response: FoodSecurityResponse = await axios.get(
+          `${BASE_URL}/v1/foodsecurity/country/${Iso3Code}`
         );
 
         if (response?.body) {
@@ -29,9 +33,9 @@ const useGetCountries = () => {
     };
 
     fetchCountries();
-  }, []);
+  }, [Iso3Code]);
 
   return { data, loading, error };
 };
 
-export default useGetCountries;
+export default useGetFoodSecurityByCountry;

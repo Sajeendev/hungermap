@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const useGetIpcPeaks = () => {
-  const [ipcPeaks, setIpcPeaks] = useState<IpcPeakData | null>(null);
+  const [data, setData] = useState<IpcPeakData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<unknown>(null);
 
@@ -18,10 +18,8 @@ const useGetIpcPeaks = () => {
           `${BASE_URL}/v1/ipc/peaks`
         );
 
-        if (response?.body?.ipc_peaks.length === 0) {
-          setIpcPeaks(response.body);
-        } else {
-          setIpcPeaks(null);
+        if (response?.body) {
+          setData(response.body);
         }
       } catch (err) {
         setError(err);
@@ -33,7 +31,7 @@ const useGetIpcPeaks = () => {
     fetchIpcPeaks();
   }, []);
 
-  return { countries: ipcPeaks, loading, error };
+  return { data, loading, error };
 };
 
 export default useGetIpcPeaks;
