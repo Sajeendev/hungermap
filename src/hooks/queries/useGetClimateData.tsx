@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/constants';
-import { ClimateData, ClimateDataResponse } from '@/types';
+import { ClimateData } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -14,12 +14,10 @@ const useGetClimateData = () => {
       setError(null);
 
       try {
-        const response: ClimateDataResponse = await axios.get(
-          `${BASE_URL}/v2/climate/country`
-        );
+        const response = await axios.get(`${BASE_URL}/v2/climate/country`);
 
-        if (response?.body) {
-          setData(response.body);
+        if (response?.data?.body) {
+          setData(response?.data?.body);
         }
       } catch (err) {
         setError(err);

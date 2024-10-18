@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/constants';
-import { CoreData, CoreDataResponse } from '@/types';
+import { CoreData } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -14,12 +14,10 @@ const useGetCoreData = () => {
       setError(null);
 
       try {
-        const response: CoreDataResponse = await axios.get(
-          `${BASE_URL}/v2/info/country`
-        );
+        const response = await axios.get(`${BASE_URL}/v2/info/country`);
 
-        if (response?.body) {
-          setData(response.body);
+        if (response?.data?.body) {
+          setData(response?.data?.body);
         }
       } catch (err) {
         setError(err);

@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/constants';
-import { IpcPeakData, IpcPeaksResponse } from '@/types';
+import { IpcPeakData } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -14,12 +14,10 @@ const useGetIpcPeakData = () => {
       setError(null);
 
       try {
-        const response: IpcPeaksResponse = await axios.get(
-          `${BASE_URL}/v1/ipc/peaks`
-        );
+        const response = await axios.get(`${BASE_URL}/v1/ipc/peaks`);
 
-        if (response?.body) {
-          setData(response.body);
+        if (response?.data?.body) {
+          setData(response?.data?.body);
         }
       } catch (err) {
         setError(err);

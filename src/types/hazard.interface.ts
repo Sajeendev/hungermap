@@ -1,4 +1,4 @@
-interface Hazard {
+export interface Hazard {
   severity: string;
   type: string;
   name: string;

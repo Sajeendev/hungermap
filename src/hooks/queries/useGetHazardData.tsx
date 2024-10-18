@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/constants';
-import { HazardData, HazardsResponse } from '@/types';
+import { HazardData } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -14,12 +14,10 @@ const useGetHazardData = () => {
       setError(null);
 
       try {
-        const response: HazardsResponse = await axios.get(
-          `${BASE_URL}/v1/climate/hazards`
-        );
+        const response = await axios.get(`${BASE_URL}/v1/climate/hazards`);
 
-        if (response?.body) {
-          setData(response.body);
+        if (response?.data?.body) {
+          setData(response?.data?.body);
         }
       } catch (err) {
         setError(err);

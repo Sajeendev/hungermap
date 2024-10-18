@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/constants';
-import { FoodSecurity, FoodSecurityResponse } from '@/types';
+import { FoodSecurity } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -18,12 +18,12 @@ const useGetFoodSecurityByCountry = ({ Iso3Code }: Props) => {
       setError(null);
 
       try {
-        const response: FoodSecurityResponse = await axios.get(
+        const response = await axios.get(
           `${BASE_URL}/v1/foodsecurity/country/${Iso3Code}`
         );
 
-        if (response?.body) {
-          setData(response.body);
+        if (response?.data?.body) {
+          setData(response?.data?.body);
         }
       } catch (err) {
         setError(err);
