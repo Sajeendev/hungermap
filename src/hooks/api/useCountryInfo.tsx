@@ -1,10 +1,10 @@
 import { BASE_URL } from '@/constants';
-import { CountryInfoInterface } from '@/types';
+import { CountryInfo, CountryInfoResponse } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const useCountryInfo = () => {
-  const [countries, setCountries] = useState<CountryInfoInterface[]>([]);
+  const [countries, setCountries] = useState<CountryInfo[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -14,8 +14,13 @@ const useCountryInfo = () => {
       setError(null);
 
       try {
-        const response = await axios.get(`${BASE_URL}/v2/info/country`);
-        setCountries(response.data);
+        const response: CountryInfoResponse = await axios.get(
+          `${BASE_URL}/v2/info/country`
+        );
+
+        if (response?.body?.countries.length === 0) {
+          setCountries(response.body.countries);
+        }
       } catch (err) {
         setError('Failed to fetch country data');
         console.error(err);
