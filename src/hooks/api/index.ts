@@ -1,3 +1,3 @@
-export { default as useGetCountries } from './useGetCountries';
+export { default as useGetCoreData } from './useGetCoreData';
 export { default as useGetFoodSecurityByCountry } from './useGetFoodSecurityByCountry';
-export { default as useGetIpcPeaks } from './useGetIpcPeaks';
+export { default as useGetIpcPeakData } from './useGetIpcPeakData';

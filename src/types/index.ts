@@ -1,7 +1,4 @@
-export {
-  type CountryData,
-  type CountryDataResponse
-} from './country-data.interface';
+export { type CoreData, type CoreDataResponse } from './core-data.interface';
 
 export {
   type FoodSecurity,
@@ -11,8 +8,8 @@ export {
 export { type IpcPeakData, type IpcPeaksResponse } from './ipc-peak.interface';
 
 export {
-  type ClimateDataResponse,
-  type ClimateInfo
+  type ClimateData,
+  type ClimateDataResponse
 } from './climate.interface';
 
 export { type Hazard, type HazardsResponse } from './hazard.interface';

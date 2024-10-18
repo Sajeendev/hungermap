@@ -18,11 +18,11 @@ interface CountryInfo {
   income_group: IncomeGroup;
 }
 
-export interface CountryData {
+export interface CoreData {
   countries: CountryInfo[];
 }
 
-export interface CountryDataResponse {
+export interface CoreDataResponse {
   statusCode: string;
-  body: CountryData;
+  body: CoreData;
 }

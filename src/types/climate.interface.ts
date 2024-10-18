@@ -33,14 +33,16 @@ interface DataPoint {
   overall: Overall;
 }
 
-export interface ClimateInfo {
+interface ClimateInfo {
   country: Country;
   dataPoints: DataPoint[];
 }
 
+export interface ClimateData {
+  countries: ClimateInfo[];
+}
+
 export interface ClimateDataResponse {
   statusCode: string;
-  body: {
-    countries: ClimateInfo[];
-  };
+  body: ClimateData;
 }

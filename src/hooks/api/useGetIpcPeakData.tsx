@@ -1,21 +1,21 @@
 import { BASE_URL } from '@/constants';
-import { CountryData, CountryDataResponse } from '@/types';
+import { IpcPeakData, IpcPeaksResponse } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const useGetCountries = () => {
-  const [data, setData] = useState<CountryData | null>(null);
+const useGetIpcPeakData = () => {
+  const [data, setData] = useState<IpcPeakData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
-    const fetchCountries = async () => {
+    const fetchData = async () => {
       setLoading(true);
       setError(null);
 
       try {
-        const response: CountryDataResponse = await axios.get(
-          `${BASE_URL}/v2/info/country`
+        const response: IpcPeaksResponse = await axios.get(
+          `${BASE_URL}/v1/ipc/peaks`
         );
 
         if (response?.body) {
@@ -28,10 +28,10 @@ const useGetCountries = () => {
       }
     };
 
-    fetchCountries();
+    fetchData();
   }, []);
 
   return { data, loading, error };
 };
 
-export default useGetCountries;
+export default useGetIpcPeakData;
