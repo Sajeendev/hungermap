@@ -1,12 +1,12 @@
-import { MantineProvider } from '@mantine/core';
 import React from 'react';
+import { AppProvider } from '../src/providers';
 
 interface Props {
   children: React.ReactNode;
 }
 
 const TestingProviders = ({ children }: Props) => {
-  return <MantineProvider>{children}</MantineProvider>;
+  return <AppProvider>{children}</AppProvider>;
 };
 
 export default TestingProviders;

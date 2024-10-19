@@ -1,11 +1,12 @@
 import { MapComponent } from '@/components/map';
-import { AppShell, MantineProvider } from '@mantine/core';
+import { AppShell } from '@mantine/core';
 
-import { theme } from './styles';
+import { ToastContainer } from 'react-toastify';
+import { AppProvider } from './providers';
 
 function App() {
   return (
-    <MantineProvider theme={theme}>
+    <AppProvider>
       <AppShell
         padding="md"
         styles={() => ({
@@ -13,7 +14,8 @@ function App() {
         })}>
         <MapComponent />
       </AppShell>
-    </MantineProvider>
+      <ToastContainer />
+    </AppProvider>
   );
 }
 

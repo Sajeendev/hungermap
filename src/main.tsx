@@ -1,4 +1,3 @@
-import '@mantine/core/styles.css';
 import 'leaflet/dist/leaflet.css';
 import './index.css';
 
