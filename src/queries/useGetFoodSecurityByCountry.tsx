@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 interface Props {
-  Iso3Code: string;
+  Iso3Code: string | undefined;
 }
 
 const useGetFoodSecurityByCountry = ({ Iso3Code }: Props) => {
@@ -14,6 +14,8 @@ const useGetFoodSecurityByCountry = ({ Iso3Code }: Props) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!Iso3Code) return;
+
       setLoading(true);
       setError(null);
 

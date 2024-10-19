@@ -1,1 +1,1 @@
-export { default as FoodSecurityComponent } from './food-security.component';
+export { default as ContriesCombo } from './countries.combo';
