@@ -3,7 +3,7 @@ import { useGetHazardData } from '@/hooks/queries';
 import L from 'leaflet';
 import { Marker, Popup } from 'react-leaflet';
 
-const HazardsMarker = () => {
+const HazardMarkers = () => {
   const { data, loading, error } = useGetHazardData();
 
   if (loading) return <p>Loading markers...</p>;
@@ -30,4 +30,4 @@ const HazardsMarker = () => {
   );
 };
 
-export default HazardsMarker;
+export default HazardMarkers;

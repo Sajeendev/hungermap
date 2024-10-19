@@ -1,1 +1,1 @@
-export { default as HazardsMarker } from './HazardsMarker';
+export { default as HazardMarkers } from './HazardMarkers';
