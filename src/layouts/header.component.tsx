@@ -1,4 +1,5 @@
-import { Box, Paper } from '@mantine/core';
+import imgLogo from '@/assets/logos';
+import { Group, Image, Paper, Title } from '@mantine/core';
 
 const HeaderComponent = () => {
   return (
@@ -16,9 +17,22 @@ const HeaderComponent = () => {
         alignItems: 'center',
         justifyContent: 'space-between',
         maxWidth: 600,
-        margin: 'auto'
+        margin: 'auto',
+        borderBottomLeftRadius: 100,
+        borderBottomRightRadius: 100
       }}>
-      <Box>Logo</Box>
+      <Group justify="center" gap={20} w="100%">
+        <Image
+          radius="md"
+          mah={40}
+          w="auto"
+          fit="contain"
+          src={imgLogo.logoWfpFull}
+        />
+        <Title order={2} c="blue">
+          HungerMap
+        </Title>
+      </Group>
     </Paper>
   );
 };

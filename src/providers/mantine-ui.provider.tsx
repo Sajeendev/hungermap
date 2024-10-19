@@ -12,7 +12,7 @@ const MantineUIProvider = ({ children }: PropTypes) => {
     <MantineProvider
       theme={theme}
       defaultColorScheme="auto"
-      classNamesPrefix="avverde"
+      classNamesPrefix="wfp"
       cssVariablesSelector="html">
       {children}
     </MantineProvider>

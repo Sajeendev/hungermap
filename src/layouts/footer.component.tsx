@@ -17,8 +17,8 @@ const FooterComponent = () => {
         justifyContent: 'space-between',
         maxWidth: 600,
         margin: 'auto',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10
+        borderTopLeftRadius: 100,
+        borderTopRightRadius: 100
       }}>
       <Box>Logo</Box>
     </Paper>
