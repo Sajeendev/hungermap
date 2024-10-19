@@ -17,3 +17,5 @@ export {
   type HazardData,
   type HazardsResponse
 } from './hazard.interface';
+
+export { type Country } from './country.interface';
