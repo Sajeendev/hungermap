@@ -2,7 +2,7 @@ import { Country } from './country.interface';
 
 interface Population {
   number: number;
-  year: string;
+  year: string | number;
   source: string;
 }
 
@@ -13,8 +13,8 @@ interface IncomeGroup {
 interface CountryInfo {
   country: Country;
   population: Population;
-  chronic_hunger: number;
-  malnutrition: number;
+  chronic_hunger: string | null;
+  malnutrition: string | null;
   income_group: IncomeGroup;
 }
 
