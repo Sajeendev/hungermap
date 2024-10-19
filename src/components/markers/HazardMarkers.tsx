@@ -1,5 +1,5 @@
 import imgMarker from '@/assets/images/markers';
-import { useGetHazardData } from '@/hooks/queries';
+import { useGetHazardData } from '@/queries';
 import L from 'leaflet';
 import { Marker, Popup } from 'react-leaflet';
 
