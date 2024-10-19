@@ -10,7 +10,7 @@ const HazardMarkers = () => {
 
   if (loading) return <ScreenLoaderComponent />;
 
-  if (error) {
+  if (error.type === 'request') {
     showToast({
       id: 'hazard',
       type: 'error',

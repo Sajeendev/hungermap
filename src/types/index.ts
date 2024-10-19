@@ -19,3 +19,5 @@ export {
 } from './hazard.interface';
 
 export { type Country } from './country.interface';
+
+export { type ErrorDataInterface } from './error.interface';

@@ -26,14 +26,14 @@ describe('useGetFoodSecurityByCountry', () => {
 
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBe(null);
-    expect(result.current.error).toBe(null);
+    expect(result.current.error).toEqual({ message: null, type: null });
 
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
     });
 
     expect(result.current.data).toEqual(coreMockData);
-    expect(result.current.error).toBe(null);
+    expect(result.current.error).toEqual({ message: null, type: null });
     expect(axios.get).toHaveBeenCalledWith(API_URL);
   });
 
@@ -46,20 +46,26 @@ describe('useGetFoodSecurityByCountry', () => {
 
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBe(null);
-    expect(result.current.error).toBe(null);
+    expect(result.current.error).toEqual({ message: null, type: null });
 
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
     });
 
     expect(result.current.data).toBe(null);
-    expect(result.current.error).toBe(null);
+    expect(result.current.error).toEqual({ message: null, type: null });
     expect(axios.get).toHaveBeenCalledWith(API_URL);
   });
 
-  it('should handle error when fetching data', async () => {
-    const mockError = new Error('Network error');
-    vi.mocked(axios.get).mockRejectedValueOnce(mockError);
+  it('should handle API error response', async () => {
+    const mockErrorResponse = {
+      data: {
+        body: {
+          error: 'API Error'
+        }
+      }
+    };
+    vi.mocked(axios.get).mockResolvedValueOnce(mockErrorResponse);
 
     const { result } = renderHook(() =>
       useGetFoodSecurityByCountry({ Iso3Code })
@@ -67,14 +73,16 @@ describe('useGetFoodSecurityByCountry', () => {
 
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBe(null);
-    expect(result.current.error).toBe(null);
+    expect(result.current.error).toEqual({ message: null, type: null });
 
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
     });
 
     expect(result.current.data).toBe(null);
-    expect(result.current.error).toBe(mockError);
-    expect(axios.get).toHaveBeenCalledWith(API_URL);
+    expect(result.current.error).toEqual({
+      message: 'API Error',
+      type: 'data'
+    });
   });
 });
