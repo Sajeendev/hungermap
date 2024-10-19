@@ -4,10 +4,13 @@ import {
   CloseIcon,
   Group,
   Paper,
+  ScrollArea,
+  Space,
   Text,
   ThemeIcon,
   Transition
 } from '@mantine/core';
+import FoodSecurityFragment from './food-security.fragment';
 
 interface Props {
   opened: boolean;
@@ -17,41 +20,48 @@ interface Props {
 
 const FootSecurityDataModal = ({ opened, close, data }: Props) => {
   return (
-    <Transition
-      mounted={opened}
-      transition="slide-up"
-      duration={500}
-      timingFunction="ease">
-      {styles => (
-        <Paper
-          shadow="md"
-          p="md"
-          style={{
-            ...styles,
-            position: 'fixed',
-            bottom: 80,
-            left: 0,
-            right: 0,
-            zIndex: 1009,
-            borderRadius: 10,
-            overflowY: 'auto',
-            maxWidth: 600,
-            margin: 'auto'
-          }}>
-          <Group justify="space-between">
-            <Text size="lg" fw={500}>
-              Food security
-            </Text>
-            <ThemeIcon size="md" color="blue" variant="transparent" c="gray">
-              <CloseIcon onClick={close} />
-            </ThemeIcon>
-          </Group>
+    <ScrollArea>
+      <Transition
+        mounted={opened}
+        transition="slide-up"
+        duration={500}
+        timingFunction="ease">
+        {styles => (
+          <Paper
+            shadow="md"
+            p="md"
+            style={{
+              ...styles,
+              position: 'fixed',
+              bottom: 80,
+              left: 0,
+              right: 0,
+              zIndex: 1009,
+              borderRadius: 10,
+              overflowY: 'auto',
+              maxWidth: 600,
+              margin: 'auto'
+            }}>
+            <Group justify="space-between">
+              <Text size="lg" fw={500}>
+                {data?.country?.name || 'Food Security'}
+              </Text>
+              <ThemeIcon size="md" color="blue" variant="transparent" c="gray">
+                <CloseIcon onClick={close} />
+              </ThemeIcon>
+            </Group>
 
-          <Text>{data?.country?.name}</Text>
-          {!data && <Text>{messages.noDataFound}</Text>}
-        </Paper>
-      )}
-    </Transition>
+            <Space h="xs" />
+
+            {data ? (
+              <FoodSecurityFragment data={data} />
+            ) : (
+              <Text>{messages.noDataFound}</Text>
+            )}
+          </Paper>
+        )}
+      </Transition>
+    </ScrollArea>
   );
 };
 
