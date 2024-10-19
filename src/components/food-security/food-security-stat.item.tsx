@@ -1,4 +1,4 @@
-import { formatNumberInMillions, formatPercentage } from '@/utils';
+import { formatInMillions, formatInPercentage } from '@/utils';
 import { Box, Card, Group, Stack, Text, ThemeIcon } from '@mantine/core';
 import { IconUsersGroup } from '@tabler/icons-react';
 
@@ -24,7 +24,7 @@ const FoodSecurityStatItem = ({ people, prevalence, title }: Props) => {
               Population
             </Text>
             <Text c="dimmed" size="lg" tt="uppercase" fw={700}>
-              {formatNumberInMillions(people)}
+              {formatInMillions(people)}
             </Text>
           </Box>
         </Group>
@@ -38,7 +38,7 @@ const FoodSecurityStatItem = ({ people, prevalence, title }: Props) => {
               Prevalence
             </Text>
             <Text c="dimmed" size="lg" tt="uppercase" fw={700}>
-              {formatPercentage(prevalence)}
+              {formatInPercentage(prevalence)}
             </Text>
           </Box>
         </Group>

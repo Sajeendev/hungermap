@@ -50,6 +50,7 @@ const FoodSecurityComponent = () => {
   return (
     <Box>
       <Paper
+        withBorder
         shadow="md"
         p="md"
         style={{

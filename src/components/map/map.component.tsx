@@ -1,7 +1,10 @@
+import { useHazardMarkerStore } from '@/store';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { HazardMarkersComponent } from '../markers';
 
 const MapComponent = () => {
+  const { showMarkers } = useHazardMarkerStore();
+
   return (
     <MapContainer center={[5, 20]} zoom={3} scrollWheelZoom={false}>
       <TileLayer
@@ -9,7 +12,7 @@ const MapComponent = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <HazardMarkersComponent />
+      {showMarkers && <HazardMarkersComponent />}
     </MapContainer>
   );
 };
