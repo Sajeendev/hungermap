@@ -21,7 +21,7 @@ const HazardMarkers = () => {
   }
 
   const customIcon = L.icon({
-    iconUrl: imgMarker.flood,
+    iconUrl: imgMarker.pdcFlood,
     iconSize: [32, 32],
     className: 'custom-marker-icon'
   });

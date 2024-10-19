@@ -1,4 +1,4 @@
-import { messages } from '@/content';
+import { messages } from '@/contents';
 import { useDevice } from '@/hooks';
 import { FoodSecurity } from '@/types';
 import {
