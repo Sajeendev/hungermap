@@ -1,4 +1,4 @@
-import { ToastifyComponent } from './components/custom';
+import { ToastifyComponent } from './components/misc/notify';
 import AppLayout from './layouts/app.layout';
 import { AppProvider } from './providers';
 

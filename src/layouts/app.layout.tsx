@@ -1,5 +1,5 @@
+import FoodSecurityComponent from '@/components/food-security/food-security.component';
 import { MapComponent } from '@/components/map';
-import FoodSecurityComponent from '@/components/metrics/food-security.component';
 import { Box } from '@mantine/core';
 import FooterComponent from './footer.component';
 import HeaderComponent from './header.component';

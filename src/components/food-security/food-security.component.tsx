@@ -3,7 +3,7 @@ import { Country } from '@/types';
 import { showToast } from '@/utils';
 import { Box } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import ContriesCombo from './countries.combo';
+import { ContriesCombo } from '../misc/combos';
 
 const FoodSecurityComponent = () => {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);

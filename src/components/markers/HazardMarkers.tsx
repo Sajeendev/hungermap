@@ -3,12 +3,12 @@ import { useGetHazardData } from '@/queries';
 import { showToast } from '@/utils';
 import L from 'leaflet';
 import { Marker, Popup } from 'react-leaflet';
-import { LoaderComponent } from '../custom';
+import { ScreenLoaderComponent } from '../misc/loaders';
 
 const HazardMarkers = () => {
   const { data, loading, error } = useGetHazardData();
 
-  if (loading) return <LoaderComponent />;
+  if (loading) return <ScreenLoaderComponent />;
 
   if (error) {
     showToast({
