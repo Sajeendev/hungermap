@@ -1,13 +1,13 @@
 import { messages } from '@/content';
+import { useDevice } from '@/hooks';
 import { FoodSecurity } from '@/types';
 import {
+  ActionIcon,
   CloseIcon,
   Group,
   Paper,
-  ScrollArea,
   Space,
   Text,
-  ThemeIcon,
   Transition
 } from '@mantine/core';
 import FoodSecurityFragment from './food-security.fragment';
@@ -19,49 +19,51 @@ interface Props {
 }
 
 const FootSecurityDataModal = ({ opened, close, data }: Props) => {
+  const { isSmallScreen } = useDevice();
+
   return (
-    <ScrollArea>
-      <Transition
-        mounted={opened}
-        transition="slide-up"
-        duration={500}
-        timingFunction="ease">
-        {styles => (
-          <Paper
-            shadow="md"
-            p="md"
-            style={{
-              ...styles,
-              position: 'fixed',
-              bottom: 80,
-              left: 0,
-              right: 0,
-              zIndex: 1009,
-              borderRadius: 10,
-              overflowY: 'auto',
-              maxWidth: 600,
-              margin: 'auto'
-            }}>
-            <Group justify="space-between">
-              <Text size="lg" fw={500}>
-                {data?.country?.name || 'Food Security'}
-              </Text>
-              <ThemeIcon size="md" color="blue" variant="transparent" c="gray">
-                <CloseIcon onClick={close} />
-              </ThemeIcon>
-            </Group>
+    <Transition
+      mounted={opened}
+      transition="slide-up"
+      duration={500}
+      timingFunction="ease">
+      {styles => (
+        <Paper
+          shadow="md"
+          p="md"
+          style={{
+            ...styles,
+            position: 'fixed',
+            bottom: isSmallScreen ? 0 : 80,
+            left: 0,
+            right: 0,
+            top: isSmallScreen ? 0 : 'auto',
+            zIndex: 1009,
+            borderRadius: 10,
+            overflowY: 'auto',
+            maxWidth: isSmallScreen ? '100%' : 600,
+            margin: isSmallScreen ? 0 : 'auto',
+            height: isSmallScreen ? '100%' : 'auto'
+          }}>
+          <Group justify="space-between">
+            <Text size="lg" fw={500}>
+              {data?.country?.name || 'Food Security'}
+            </Text>
+            <ActionIcon size="md" color="blue" variant="transparent" c="gray">
+              <CloseIcon onClick={close} />
+            </ActionIcon>
+          </Group>
 
-            <Space h="xs" />
+          <Space h="xs" />
 
-            {data ? (
-              <FoodSecurityFragment data={data} />
-            ) : (
-              <Text>{messages.noDataFound}</Text>
-            )}
-          </Paper>
-        )}
-      </Transition>
-    </ScrollArea>
+          {data ? (
+            <FoodSecurityFragment data={data} />
+          ) : (
+            <Text ta="center">{messages.noDataFound}</Text>
+          )}
+        </Paper>
+      )}
+    </Transition>
   );
 };
 

@@ -11,23 +11,23 @@ const FoodSecurityFragment = ({ data }: Props) => {
     <SimpleGrid cols={{ base: 1, sm: 2 }}>
       <FoodSecurityStatItem
         title="Food Consumption Score"
-        people={data?.metrics.fcs.people}
-        prevalence={data?.metrics.fcs.prevalence}
+        people={data?.metrics?.fcs?.people}
+        prevalence={data?.metrics?.fcs?.prevalence}
       />
       <FoodSecurityStatItem
         title="Reduced Coping Strategy Index"
-        people={data?.metrics.rcsi.people}
-        prevalence={data?.metrics.rcsi.prevalence}
+        people={data?.metrics?.rcsi?.people}
+        prevalence={data?.metrics?.rcsi?.prevalence}
       />
       <FoodSecurityStatItem
         title="Health Access"
-        people={data?.metrics.healthAccess.people}
-        prevalence={data?.metrics.healthAccess.prevalence}
+        people={data?.metrics?.healthAccess?.people}
+        prevalence={data?.metrics?.healthAccess?.prevalence}
       />
       <FoodSecurityStatItem
         title="Market Access"
-        people={data?.metrics.marketAccess.people}
-        prevalence={data?.metrics.marketAccess.prevalence}
+        people={data?.metrics?.marketAccess?.people}
+        prevalence={data?.metrics?.marketAccess?.prevalence}
       />
     </SimpleGrid>
   );

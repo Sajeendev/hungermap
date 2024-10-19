@@ -28,6 +28,7 @@ const HeaderComponent = () => {
           w="auto"
           fit="contain"
           src={imgLogo.logoWfpFull}
+          visibleFrom="sm"
         />
         <Title order={2} c="blue">
           HungerMap

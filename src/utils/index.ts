@@ -2,5 +2,5 @@ export { showToast } from './toast';
 
 export {
   formatInMillions as formatNumberInMillions,
-  formatPercentage
+  formatInPercentage as formatPercentage
 } from './generic';

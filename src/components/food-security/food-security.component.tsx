@@ -1,13 +1,17 @@
+import { messages } from '@/content';
+import { useDevice } from '@/hooks';
 import { useGetFoodSecurityByCountry } from '@/queries';
 import { Country } from '@/types';
 import { showToast } from '@/utils';
-import { Box } from '@mantine/core';
+import { Box, Paper } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { ContriesCombo } from '../misc/combos';
 import FootSecurityDataModal from './food-security-data.modal';
 
 const FoodSecurityComponent = () => {
+  const { isSmallScreen } = useDevice();
+
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [debouncedSelectedCountry] = useDebouncedValue(selectedCountry, 500);
 
@@ -22,7 +26,7 @@ const FoodSecurityComponent = () => {
       showToast({
         id: 'food-security',
         type: 'error',
-        message: 'Error on retrieving data'
+        message: messages.errorFetchingData
       });
     }
   }, [error]);
@@ -45,11 +49,25 @@ const FoodSecurityComponent = () => {
 
   return (
     <Box>
-      <ContriesCombo
-        selectedCountry={selectedCountry}
-        setSelectedCountry={setSelectedCountry}
-        isLoading={loading}
-      />
+      <Paper
+        shadow="md"
+        p="md"
+        style={{
+          position: 'absolute',
+          top: 90,
+          left: isSmallScreen ? '0' : 160,
+          right: isSmallScreen ? '0' : 'unset',
+          zIndex: 1006,
+          width: '100%',
+          maxWidth: 360,
+          margin: isSmallScreen ? `0 auto` : 0
+        }}>
+        <ContriesCombo
+          selectedCountry={selectedCountry}
+          setSelectedCountry={setSelectedCountry}
+          isLoading={loading}
+        />
+      </Paper>
 
       <FootSecurityDataModal
         opened={showModal}
