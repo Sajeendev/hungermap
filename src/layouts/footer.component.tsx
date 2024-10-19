@@ -1,8 +1,11 @@
 import imgMenu from '@/assets/images/menus';
+import { useHazardMarkerStore } from '@/store';
 import { Group, Paper } from '@mantine/core';
 import FooterMenuItem from './footer-menu.item';
 
 const FooterComponent = () => {
+  const { toggleMarkers } = useHazardMarkerStore();
+
   return (
     <Paper
       withBorder
@@ -24,7 +27,26 @@ const FooterComponent = () => {
         borderTopRightRadius: 100
       }}>
       <Group justify="space-evenly" w="100%">
-        <FooterMenuItem image={imgMenu.hazard} title="Hazard" />
+        <FooterMenuItem
+          image={imgMenu.popultaion}
+          title="Population"
+          onClick={() => {}}
+        />
+        <FooterMenuItem
+          image={imgMenu.food}
+          title="Nutrition"
+          onClick={() => {}}
+        />
+        <FooterMenuItem
+          image={imgMenu.climate}
+          title="Climate"
+          onClick={() => {}}
+        />
+        <FooterMenuItem
+          image={imgMenu.hazard}
+          title="Hazard"
+          onClick={toggleMarkers}
+        />
       </Group>
     </Paper>
   );
