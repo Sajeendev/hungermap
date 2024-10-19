@@ -21,8 +21,9 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "test/*": ["./test/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "test/mocks"]
 }

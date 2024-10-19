@@ -1,7 +1,7 @@
 import { BASE_URL } from '@/constants';
-import { mockCoreData } from '@/mocks';
-import { renderHook, waitFor } from '@testing-library/react';
 import axios from 'axios';
+import { mockCoreData } from 'test/mocks';
+import { renderHook, waitFor } from 'test/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import useGetCoreData from '../useGetCoreData';
 

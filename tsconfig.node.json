@@ -19,7 +19,8 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "test/*": ["./test/*"]
     }
   },
   "include": ["vite.config.ts"]
