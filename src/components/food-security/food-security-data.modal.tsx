@@ -1,6 +1,7 @@
 import { messages } from '@/contents';
 import { useDevice } from '@/hooks';
 import { FoodSecurity } from '@/types';
+import { formatToRelativeTime } from '@/utils/date.util';
 import {
   ActionIcon,
   CloseIcon,
@@ -61,6 +62,11 @@ const FootSecurityDataModal = ({ opened, close, data }: Props) => {
           ) : (
             <Text ta="center">{messages.noDataFound}</Text>
           )}
+
+          <Space h="xs" />
+          <Text ta="right" size="xs" c="dimmed" fw={500}>
+            Updated {formatToRelativeTime(data?.date)}
+          </Text>
         </Paper>
       )}
     </Transition>
