@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer } from 'react-leaflet';
-import { HazardMarkers } from '../markers';
+import { HazardMarkersComponent } from '../markers';
 
 const MapComponent = () => {
   return (
@@ -9,7 +9,7 @@ const MapComponent = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <HazardMarkers />
+      <HazardMarkersComponent />
     </MapContainer>
   );
 };

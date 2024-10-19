@@ -1,11 +1,12 @@
-import imgMarker from '@/assets/images/markers';
+import { messages } from '@/contents';
 import { useGetHazardData } from '@/queries';
 import { showToast } from '@/utils';
 import L from 'leaflet';
 import { Marker, Popup } from 'react-leaflet';
 import { ScreenLoaderComponent } from '../misc/loaders';
+import { getMarkerByType } from './get-marker';
 
-const HazardMarkers = () => {
+const HazardMarkersComponent = () => {
   const { data, loading, error } = useGetHazardData();
 
   if (loading) return <ScreenLoaderComponent />;
@@ -14,17 +15,17 @@ const HazardMarkers = () => {
     showToast({
       id: 'hazard',
       type: 'error',
-      message: 'Error on updating hazards'
+      message: messages.errorFetchingData
     });
 
     return null;
   }
 
-  const customIcon = L.icon({
-    iconUrl: imgMarker.pdcFlood,
-    iconSize: [32, 32],
-    className: 'custom-marker-icon'
-  });
+  const getIcon = (type: string) =>
+    L.icon({
+      iconUrl: getMarkerByType(type),
+      iconSize: [32, 32]
+    });
 
   return (
     <>
@@ -32,7 +33,7 @@ const HazardMarkers = () => {
         <Marker
           key={`hazard-${index}`}
           position={[hazard.latitude, hazard.longitude]}
-          icon={customIcon}>
+          icon={getIcon(hazard.type)}>
           <Popup>{hazard.name}</Popup>
         </Marker>
       ))}
@@ -40,4 +41,4 @@ const HazardMarkers = () => {
   );
 };
 
-export default HazardMarkers;
+export default HazardMarkersComponent;

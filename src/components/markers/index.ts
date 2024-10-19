@@ -1,1 +1,1 @@
-export { default as HazardMarkers } from './HazardMarkers';
+export { default as HazardMarkersComponent } from './hazard-makers.component';
