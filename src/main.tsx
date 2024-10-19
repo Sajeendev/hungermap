@@ -1,4 +1,5 @@
 import 'leaflet/dist/leaflet.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
 import { StrictMode } from 'react';

@@ -1,7 +1,7 @@
 import { MapComponent } from '@/components/map';
 import { AppShell } from '@mantine/core';
 
-import { ToastContainer } from 'react-toastify';
+import { Slide, ToastContainer } from 'react-toastify';
 import { AppProvider } from './providers';
 
 function App() {
@@ -14,7 +14,21 @@ function App() {
         })}>
         <MapComponent />
       </AppShell>
-      <ToastContainer />
+
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        limit={3}
+        transition={Slide}
+        style={{ fontSize: '14px' }}
+        theme="dark"
+      />
     </AppProvider>
   );
 }

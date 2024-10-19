@@ -9,7 +9,7 @@ interface PropTypes {
   children: ReactNode;
 }
 
-const MantineThemeProvider = ({ children }: PropTypes) => {
+const MantineUIProvider = ({ children }: PropTypes) => {
   return (
     <MantineProvider
       theme={theme}
@@ -21,4 +21,4 @@ const MantineThemeProvider = ({ children }: PropTypes) => {
   );
 };
 
-export default MantineThemeProvider;
+export default MantineUIProvider;

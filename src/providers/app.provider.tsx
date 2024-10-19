@@ -1,16 +1,11 @@
-import { MantineThemeProvider } from '@mantine/core';
 import { ReactNode } from 'react';
-import ToastifyProvider from './toastify.provider';
+import MantineUIProvider from './mantine-ui.provider';
 
 interface Props {
   children: ReactNode;
 }
 
 const AppProvider = ({ children }: Props) => {
-  return (
-    <MantineThemeProvider>
-      <ToastifyProvider>{children}</ToastifyProvider>
-    </MantineThemeProvider>
-  );
+  return <MantineUIProvider>{children}</MantineUIProvider>;
 };
 export default AppProvider;

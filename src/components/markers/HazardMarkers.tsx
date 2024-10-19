@@ -1,5 +1,6 @@
 import imgMarker from '@/assets/images/markers';
 import { useGetHazardData } from '@/queries';
+import { showToast } from '@/utils';
 import L from 'leaflet';
 import { Marker, Popup } from 'react-leaflet';
 import { LoaderComponent } from '../custom';
@@ -9,7 +10,15 @@ const HazardMarkers = () => {
 
   if (loading) return <LoaderComponent />;
 
-  if (!error) return null;
+  if (error) {
+    showToast({
+      id: 'hazard',
+      type: 'error',
+      message: 'Error on updating hazards'
+    });
+
+    return null;
+  }
 
   const customIcon = L.icon({
     iconUrl: imgMarker.flood,
