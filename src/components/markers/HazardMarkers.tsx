@@ -2,13 +2,14 @@ import imgMarker from '@/assets/images/markers';
 import { useGetHazardData } from '@/queries';
 import L from 'leaflet';
 import { Marker, Popup } from 'react-leaflet';
+import { LoaderComponent } from '../custom';
 
 const HazardMarkers = () => {
   const { data, loading, error } = useGetHazardData();
 
-  if (loading) return <p>Loading markers...</p>;
+  if (loading) return <LoaderComponent />;
 
-  if (error) return <p>Error loading hazard data</p>;
+  if (!error) return null;
 
   const customIcon = L.icon({
     iconUrl: imgMarker.flood,
