@@ -3,13 +3,13 @@ import axios from 'axios';
 import { coreMockData } from 'test/mocks';
 import { renderHook, waitFor } from 'test/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import useGetCoreData from '../useGetCoreData';
+import useGetHazardData from '../useGetHazardData';
 
 vi.mock('axios');
 
-const API_URL = `${BASE_URL}/v2/info/country`;
+const API_URL = `${BASE_URL}/v1/climate/hazards`;
 
-describe('useGetCoreData', () => {
+describe('useGetHazardData', () => {
   beforeEach(() => {
     vi.resetAllMocks();
   });
@@ -19,7 +19,7 @@ describe('useGetCoreData', () => {
       data: { body: coreMockData }
     });
 
-    const { result } = renderHook(() => useGetCoreData());
+    const { result } = renderHook(() => useGetHazardData());
 
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBe(null);
@@ -37,7 +37,7 @@ describe('useGetCoreData', () => {
   it('should handle empty data', async () => {
     vi.mocked(axios.get).mockResolvedValueOnce({ data: { body: null } });
 
-    const { result } = renderHook(() => useGetCoreData());
+    const { result } = renderHook(() => useGetHazardData());
 
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBe(null);
@@ -56,7 +56,7 @@ describe('useGetCoreData', () => {
     const mockError = new Error('Network error');
     vi.mocked(axios.get).mockRejectedValueOnce(mockError);
 
-    const { result } = renderHook(() => useGetCoreData());
+    const { result } = renderHook(() => useGetHazardData());
 
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBe(null);

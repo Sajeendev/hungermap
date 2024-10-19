@@ -3,13 +3,14 @@ import axios from 'axios';
 import { coreMockData } from 'test/mocks';
 import { renderHook, waitFor } from 'test/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import useGetCoreData from '../useGetCoreData';
+import useGetFoodSecurityByCountry from '../useGetFoodSecurityByCountry';
 
 vi.mock('axios');
 
-const API_URL = `${BASE_URL}/v2/info/country`;
+const Iso3Code = 'AFG';
+const API_URL = `${BASE_URL}/v1/foodsecurity/country/${Iso3Code}`;
 
-describe('useGetCoreData', () => {
+describe('useGetFoodSecurityByCountry', () => {
   beforeEach(() => {
     vi.resetAllMocks();
   });
@@ -19,7 +20,9 @@ describe('useGetCoreData', () => {
       data: { body: coreMockData }
     });
 
-    const { result } = renderHook(() => useGetCoreData());
+    const { result } = renderHook(() =>
+      useGetFoodSecurityByCountry({ Iso3Code })
+    );
 
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBe(null);
@@ -37,7 +40,9 @@ describe('useGetCoreData', () => {
   it('should handle empty data', async () => {
     vi.mocked(axios.get).mockResolvedValueOnce({ data: { body: null } });
 
-    const { result } = renderHook(() => useGetCoreData());
+    const { result } = renderHook(() =>
+      useGetFoodSecurityByCountry({ Iso3Code })
+    );
 
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBe(null);
@@ -56,7 +61,9 @@ describe('useGetCoreData', () => {
     const mockError = new Error('Network error');
     vi.mocked(axios.get).mockRejectedValueOnce(mockError);
 
-    const { result } = renderHook(() => useGetCoreData());
+    const { result } = renderHook(() =>
+      useGetFoodSecurityByCountry({ Iso3Code })
+    );
 
     expect(result.current.loading).toBe(true);
     expect(result.current.data).toBe(null);
