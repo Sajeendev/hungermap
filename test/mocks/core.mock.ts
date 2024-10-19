@@ -1,6 +1,6 @@
 import { CoreData } from '@/types';
 
-export const mockCoreData: CoreData = {
+export const coreMockData: CoreData = {
   countries: [
     {
       country: {
