@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky",
-    "check-types": "tsc --noEmit",
+    "check:types": "tsc --noEmit",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,json}'",
     "test": "vitest",
     "test:run": "vitest run",
