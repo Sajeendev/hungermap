@@ -7,7 +7,7 @@ interface Props {
 const ScreenLoader = ({ size = 32 }: Props) => {
   return (
     <Group justify="center" my={20}>
-      <Loader size={32} />
+      <Loader size={size} />
     </Group>
   );
 };
