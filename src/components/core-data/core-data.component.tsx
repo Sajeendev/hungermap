@@ -11,6 +11,7 @@ import {
   Text,
   Transition
 } from '@mantine/core';
+import { HazardPanel } from './panels/hazard';
 import { NutritionPanel } from './panels/nutrition';
 
 interface Props {
@@ -28,7 +29,7 @@ const CoreDataComponent = ({ isLoading }: Props) => {
       case InfoPanelEnum.Climate:
         return <Text>Climate</Text>;
       case InfoPanelEnum.Hazard:
-        return <Text>Hazard</Text>;
+        return <HazardPanel />;
 
       default:
         return null;

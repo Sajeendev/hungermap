@@ -16,7 +16,9 @@ const NutritionSummaryItem = ({ year, stats }: Props) => {
 
   return (
     <Card shadow="none" withBorder py={10}>
-      <Text fw={700}>{year}</Text>
+      <Text fw={700} c="dimmed">
+        {year}
+      </Text>
       <Text size="xs">Total Countries: {stats.totalCountries}</Text>
       <Text size="xs">Total Population: {poulation || 'N/A'}</Text>
       <Text size="xs">Acute Malnutrition: {acuteMalnutrition || 'N/A'}</Text>

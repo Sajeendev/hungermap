@@ -5,7 +5,7 @@ interface Props {
   summary: Record<string, NutritionSummary>;
 }
 
-const NutritionChartItem = ({ summary }: Props) => {
+const NutritionChart = ({ summary }: Props) => {
   const chartData = Object.entries(summary).map(([year, stats]) => ({
     year,
     totalCountries: stats.totalCountries,
@@ -27,4 +27,4 @@ const NutritionChartItem = ({ summary }: Props) => {
   );
 };
 
-export default NutritionChartItem;
+export default NutritionChart;

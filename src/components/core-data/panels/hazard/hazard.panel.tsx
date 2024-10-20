@@ -1,23 +1,19 @@
 import { messages } from '@/contents';
-import { useGetCoreData } from '@/queries';
-import { NutritionSummary } from '@/types';
-import { getNutritionSummaryByYear, showToast } from '@/utils';
+import { useGetHazardData } from '@/queries';
+import { getHazardSummary, showToast } from '@/utils';
 import { Box, Group, Loader, Stack, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import NutritionChart from './nutrition-chart';
-import NutritionSummaryItem from './nutrition-summary.item';
+import HazardSummaryItem from './hazard-summary.item';
+import HazardChart from './hazard.chart';
 
-const NutritionPanel = () => {
-  const { data, loading, error } = useGetCoreData();
-  const [summary, setSummary] = useState<Record<
-    string,
-    NutritionSummary
-  > | null>(null);
+const HazardPanel = () => {
+  const { data, loading, error } = useGetHazardData();
+  const [summary, setSummary] = useState<Record<string, number> | null>(null);
 
   useEffect(() => {
     if (error.type === 'request') {
       showToast({
-        id: 'nutrition',
+        id: 'hazard',
         type: 'error',
         message: messages.errorFetchingData
       });
@@ -26,7 +22,7 @@ const NutritionPanel = () => {
 
   useEffect(() => {
     if (data && !error.type) {
-      setSummary(getNutritionSummaryByYear(data));
+      setSummary(getHazardSummary(data?.hazards));
     }
   }, [data, error]);
 
@@ -51,16 +47,18 @@ const NutritionPanel = () => {
   return (
     <Stack>
       <Text fw={500} size="lg" ta="center" c="dimmed">
-        Malnutrition Stats
+        Hazards Stats
       </Text>
 
-      <NutritionChart summary={summary} />
+      <HazardChart data={summary} />
 
-      {Object.entries(summary).map(([year, stats]) => (
-        <NutritionSummaryItem stats={stats} key={year} year={year} />
-      ))}
+      <Box>
+        {Object.entries(summary).map(([type, count]) => (
+          <HazardSummaryItem key={type} stat={count} title={type} />
+        ))}
+      </Box>
     </Stack>
   );
 };
 
-export default NutritionPanel;
+export default HazardPanel;
