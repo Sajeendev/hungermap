@@ -11,6 +11,7 @@ import {
   Text,
   Transition
 } from '@mantine/core';
+import { NutritionPanel } from './panels/nutrition';
 
 interface Props {
   isLoading: boolean;
@@ -22,10 +23,8 @@ const CoreDataComponent = ({ isLoading }: Props) => {
 
   const renderPanel = () => {
     switch (activePanel) {
-      case InfoPanelEnum.Population:
-        return <Text>Population</Text>;
       case InfoPanelEnum.Nutrition:
-        return <Text>Nutrition</Text>;
+        return <NutritionPanel />;
       case InfoPanelEnum.Climate:
         return <Text>Climate</Text>;
       case InfoPanelEnum.Hazard:

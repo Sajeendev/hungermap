@@ -1,7 +1,7 @@
 import { messages } from '@/contents';
 import { useDevice } from '@/hooks';
 import { FoodSecurity } from '@/types';
-import { formatToRelativeTime } from '@/utils/date.util';
+import { formatToRelativeTime } from '@/utils';
 import {
   ActionIcon,
   CloseIcon,

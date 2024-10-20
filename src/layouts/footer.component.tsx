@@ -14,11 +14,6 @@ const FooterComponent = () => {
     toggleMarkers();
   };
 
-  const handleChangePopulation = () => {
-    setActivePanel(InfoPanelEnum.Population);
-    openPanel(InfoPanelEnum.Population);
-  };
-
   const handleChangeClimate = () => {
     setActivePanel(InfoPanelEnum.Climate);
     openPanel(InfoPanelEnum.Climate);
@@ -50,11 +45,6 @@ const FooterComponent = () => {
         borderTopRightRadius: 100
       }}>
       <Group justify="space-evenly" w="100%">
-        <FooterMenuItem
-          image={imgMenu.popultaion}
-          title="Population"
-          onClick={handleChangePopulation}
-        />
         <FooterMenuItem
           image={imgMenu.food}
           title="Nutrition"
