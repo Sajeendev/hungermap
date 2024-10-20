@@ -24,7 +24,7 @@ npm run build
 
 ```bash
 # unit tests
-npm run test:run
+npm run test
 
 # watch mode
 npm run test:watch

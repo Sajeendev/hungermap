@@ -5,7 +5,6 @@ import {
   ActionIcon,
   CloseIcon,
   Group,
-  Loader,
   Paper,
   Space,
   Text,
@@ -15,11 +14,7 @@ import { ClimatePanel } from './panels/climate';
 import { HazardPanel } from './panels/hazard';
 import { NutritionPanel } from './panels/nutrition';
 
-interface Props {
-  isLoading: boolean;
-}
-
-const CoreDataComponent = ({ isLoading }: Props) => {
+const CoreDataComponent = () => {
   const { isSmallScreen } = useDevice();
   const { isOpen, closePanel, activePanel } = useInfoPanelStore();
 
@@ -70,13 +65,7 @@ const CoreDataComponent = ({ isLoading }: Props) => {
 
           <Space h="xs" />
 
-          {isLoading ? (
-            <Group justify="center" my={20}>
-              <Loader size={isSmallScreen ? 'md' : 'lg'} />
-            </Group>
-          ) : (
-            renderPanel()
-          )}
+          {renderPanel()}
         </Paper>
       )}
     </Transition>
