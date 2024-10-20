@@ -1,11 +1,33 @@
 import imgMenu from '@/assets/images/menus';
+import { InfoPanelEnum } from '@/enums';
 import { useHazardMarkerStore, useInfoPanelStore } from '@/store';
 import { Group, Paper } from '@mantine/core';
 import FooterMenuItem from './footer-menu.item';
 
 const FooterComponent = () => {
   const { toggleMarkers } = useHazardMarkerStore();
-  const { togglePanel } = useInfoPanelStore();
+  const { openPanel, setActivePanel } = useInfoPanelStore();
+
+  const handleChangeHazard = () => {
+    setActivePanel(InfoPanelEnum.Hazard);
+    openPanel(InfoPanelEnum.Hazard);
+    toggleMarkers();
+  };
+
+  const handleChangePopulation = () => {
+    setActivePanel(InfoPanelEnum.Population);
+    openPanel(InfoPanelEnum.Population);
+  };
+
+  const handleChangeClimate = () => {
+    setActivePanel(InfoPanelEnum.Climate);
+    openPanel(InfoPanelEnum.Climate);
+  };
+
+  const handleChangeNutrition = () => {
+    setActivePanel(InfoPanelEnum.Nutrition);
+    openPanel(InfoPanelEnum.Nutrition);
+  };
 
   return (
     <Paper
@@ -31,22 +53,22 @@ const FooterComponent = () => {
         <FooterMenuItem
           image={imgMenu.popultaion}
           title="Population"
-          onClick={togglePanel}
+          onClick={handleChangePopulation}
         />
         <FooterMenuItem
           image={imgMenu.food}
           title="Nutrition"
-          onClick={togglePanel}
+          onClick={handleChangeNutrition}
         />
         <FooterMenuItem
           image={imgMenu.climate}
           title="Climate"
-          onClick={togglePanel}
+          onClick={handleChangeClimate}
         />
         <FooterMenuItem
           image={imgMenu.hazard}
           title="Hazard"
-          onClick={toggleMarkers}
+          onClick={handleChangeHazard}
         />
       </Group>
     </Paper>

@@ -1,7 +1,3 @@
-<p align="center">
-  <a href="" target="blank"><img src="./src/assets/logos/logo-wfp.png" width="320" alt="Logo" /></a>
-</p>
-
 # Hungermap
 
 ## Description
