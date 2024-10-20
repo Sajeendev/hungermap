@@ -16,7 +16,7 @@ interface Ndvi {
   prevalenceAnomaly: number;
 }
 
-interface Overall {
+export interface ClimateOverallStat {
   peopleDry: number;
   peopleWet: number;
   peopleAnomaly: number;
@@ -30,10 +30,10 @@ interface DataPoint {
   inSeason: boolean;
   rainfall: Rainfall;
   ndvi: Ndvi;
-  overall: Overall;
+  overall: ClimateOverallStat;
 }
 
-interface ClimateInfo {
+export interface ClimateInfo {
   country: Country;
   dataPoints: DataPoint[];
 }

@@ -1,7 +1,8 @@
+import { ComponentLoader } from '@/components/misc/loaders';
 import { messages } from '@/contents';
 import { useGetHazardData } from '@/queries';
 import { getHazardSummary, showToast } from '@/utils';
-import { Box, Group, Loader, Stack, Text } from '@mantine/core';
+import { Box, Stack, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import HazardSummaryItem from './hazard-summary.item';
 import HazardChart from './hazard.chart';
@@ -27,11 +28,7 @@ const HazardPanel = () => {
   }, [data, error]);
 
   if (loading) {
-    return (
-      <Group justify="center" my={20}>
-        <Loader size={32} />
-      </Group>
-    );
+    return <ComponentLoader />;
   }
 
   if (!summary || Object.keys(summary).length === 0) {

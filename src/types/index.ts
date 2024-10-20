@@ -13,7 +13,9 @@ export { type IpcPeakData, type IpcPeaksResponse } from './ipc-peak.interface';
 
 export {
   type ClimateData,
-  type ClimateDataResponse
+  type ClimateDataResponse,
+  type ClimateInfo,
+  type ClimateOverallStat
 } from './climate.interface';
 
 export {

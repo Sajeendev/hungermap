@@ -64,9 +64,11 @@ const FootSecurityDataModal = ({ opened, close, data }: Props) => {
           )}
 
           <Space h="xs" />
-          <Text ta="right" size="xs" c="dimmed" fw={500}>
-            Updated {formatToRelativeTime(data?.date)}
-          </Text>
+          {data?.date && (
+            <Text ta="right" size="xs" c="dimmed" fw={500}>
+              Updated {formatToRelativeTime(data.date)}
+            </Text>
+          )}
         </Paper>
       )}
     </Transition>

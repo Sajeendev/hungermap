@@ -10,7 +10,7 @@ interface Props {
 
 const FoodSecurityStatItem = ({ people, prevalence, title }: Props) => {
   return (
-    <Card withBorder shadow="xs">
+    <Card withBorder shadow="none">
       <Stack>
         <Text size="sm" fw={700}>
           {title}

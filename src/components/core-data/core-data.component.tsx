@@ -11,6 +11,7 @@ import {
   Text,
   Transition
 } from '@mantine/core';
+import { ClimatePanel } from './panels/climate';
 import { HazardPanel } from './panels/hazard';
 import { NutritionPanel } from './panels/nutrition';
 
@@ -27,7 +28,7 @@ const CoreDataComponent = ({ isLoading }: Props) => {
       case InfoPanelEnum.Nutrition:
         return <NutritionPanel />;
       case InfoPanelEnum.Climate:
-        return <Text>Climate</Text>;
+        return <ClimatePanel />;
       case InfoPanelEnum.Hazard:
         return <HazardPanel />;
 

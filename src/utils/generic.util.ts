@@ -1,7 +1,7 @@
 export const formatInPercentage = (input: number | undefined): string => {
   if (!input) return '';
 
-  return (input * 100).toFixed(2) + '%';
+  return (input * 100).toFixed(1) + '%';
 };
 
 export const formatInMillions = (input: number): string => {

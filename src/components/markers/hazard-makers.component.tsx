@@ -3,13 +3,13 @@ import { useGetHazardData } from '@/queries';
 import { showToast } from '@/utils';
 import L from 'leaflet';
 import { Marker, Popup } from 'react-leaflet';
-import { ScreenLoaderComponent } from '../misc/loaders';
+import { ScreenLoader } from '../misc/loaders';
 import { getMarkerByType } from './get-marker';
 
 const HazardMarkersComponent = () => {
   const { data, loading, error } = useGetHazardData();
 
-  if (loading) return <ScreenLoaderComponent />;
+  if (loading) return <ScreenLoader />;
 
   if (error.type === 'request') {
     showToast({

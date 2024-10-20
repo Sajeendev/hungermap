@@ -1,8 +1,9 @@
+import { ComponentLoader } from '@/components/misc/loaders';
 import { messages } from '@/contents';
 import { useGetCoreData } from '@/queries';
 import { NutritionSummary } from '@/types';
 import { getNutritionSummaryByYear, showToast } from '@/utils';
-import { Box, Group, Loader, Stack, Text } from '@mantine/core';
+import { Box, Stack, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import NutritionChart from './nutrition-chart';
 import NutritionSummaryItem from './nutrition-summary.item';
@@ -31,11 +32,7 @@ const NutritionPanel = () => {
   }, [data, error]);
 
   if (loading) {
-    return (
-      <Group justify="center" my={20}>
-        <Loader size={32} />
-      </Group>
-    );
+    return <ComponentLoader />;
   }
 
   if (!summary || Object.keys(summary).length === 0) {
