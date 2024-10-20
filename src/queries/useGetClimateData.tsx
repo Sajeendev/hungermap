@@ -1,12 +1,12 @@
 import { BASE_URL } from '@/constants';
-import { ClimateData, ErrorDataInterface } from '@/types';
+import { ClimateData, ErrorData } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const useGetClimateData = () => {
   const [data, setData] = useState<ClimateData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<ErrorDataInterface>({
+  const [error, setError] = useState<ErrorData>({
     message: null,
     type: null
   });

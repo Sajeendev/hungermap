@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/constants';
-import { ErrorDataInterface, FoodSecurity } from '@/types';
+import { ErrorData, FoodSecurity } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -10,7 +10,7 @@ interface Props {
 const useGetFoodSecurityByCountry = ({ Iso3Code }: Props) => {
   const [data, setData] = useState<FoodSecurity | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<ErrorDataInterface>({
+  const [error, setError] = useState<ErrorData>({
     message: null,
     type: null
   });

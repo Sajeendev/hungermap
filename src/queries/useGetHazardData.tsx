@@ -1,12 +1,12 @@
 import { BASE_URL } from '@/constants';
-import { ErrorDataInterface, HazardData } from '@/types';
+import { ErrorData, HazardData } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const useGetHazardData = () => {
   const [data, setData] = useState<HazardData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<ErrorDataInterface>({
+  const [error, setError] = useState<ErrorData>({
     message: null,
     type: null
   });

@@ -1,12 +1,12 @@
 import { BASE_URL } from '@/constants';
-import { CoreData, ErrorDataInterface } from '@/types';
+import { CoreData, ErrorData } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const useGetCoreData = () => {
   const [data, setData] = useState<CoreData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<ErrorDataInterface>({
+  const [error, setError] = useState<ErrorData>({
     message: null,
     type: null
   });

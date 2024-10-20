@@ -1,12 +1,12 @@
 import { BASE_URL } from '@/constants';
-import { ErrorDataInterface, IpcPeakData } from '@/types';
+import { ErrorData, IpcPeakData } from '@/types';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const useGetIpcPeakData = () => {
   const [data, setData] = useState<IpcPeakData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<ErrorDataInterface>({
+  const [error, setError] = useState<ErrorData>({
     message: null,
     type: null
   });
