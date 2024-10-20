@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import TestingProviders from './testing.provider';
 
@@ -8,4 +9,4 @@ const customRender = (ui: React.ReactElement, options = {}) =>
 
 // eslint-disable-next-line react-refresh/only-export-components
 export * from '@testing-library/react';
-export { customRender as render };
+export { customRender as render, userEvent };
