@@ -1,14 +1,20 @@
-export const formatInPercentage = (input: number): string => {
+export const formatInPercentage = (input: number | undefined): string => {
   if (!input) return '';
 
   return (input * 100).toFixed(2) + '%';
 };
 
 export const formatInMillions = (input: number): string => {
-  if (!input) return '';
+  if (isNaN(input) || input === null || input === undefined) return '';
 
-  if (input >= 1_000_000) {
+  const absInput = Math.abs(input);
+
+  if (absInput >= 1_000_000) {
     return (input / 1_000_000).toFixed(1) + 'M';
+  }
+
+  if (absInput >= 1_000) {
+    return (input / 1_000).toFixed(1) + 'K';
   }
 
   return input.toString();

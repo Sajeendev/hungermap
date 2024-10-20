@@ -10,11 +10,18 @@ interface IncomeGroup {
   level: string;
 }
 
-interface CountryInfo {
+interface Malnutrition {
+  acute_percent: number;
+  chronic_percent: number;
+  year: string | number;
+  source: string;
+}
+
+export interface CountryInfo {
   country: Country;
   population: Population;
   chronic_hunger: string | null;
-  malnutrition: string | null;
+  malnutrition: Malnutrition | null;
   income_group: IncomeGroup;
 }
 

@@ -1,4 +1,8 @@
-export { type CoreData, type CoreDataResponse } from './core-data.interface';
+export {
+  type CoreData,
+  type CoreDataResponse,
+  type CountryInfo
+} from './core-data.interface';
 
 export {
   type FoodSecurity,

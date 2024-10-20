@@ -6,8 +6,10 @@ interface MarkerStore {
   toggleMarkers: () => void;
 }
 
-export const useHazardMarkerStore = create<MarkerStore>(set => ({
+const useHazardMarkerStore = create<MarkerStore>(set => ({
   showMarkers: true,
   hideMarkers: () => set({ showMarkers: false }),
   toggleMarkers: () => set(state => ({ showMarkers: !state.showMarkers }))
 }));
+
+export default useHazardMarkerStore;

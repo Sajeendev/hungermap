@@ -1,10 +1,11 @@
 import imgMenu from '@/assets/images/menus';
-import { useHazardMarkerStore } from '@/store';
+import { useHazardMarkerStore, useInfoPanelStore } from '@/store';
 import { Group, Paper } from '@mantine/core';
 import FooterMenuItem from './footer-menu.item';
 
 const FooterComponent = () => {
   const { toggleMarkers } = useHazardMarkerStore();
+  const { togglePanel } = useInfoPanelStore();
 
   return (
     <Paper
@@ -30,17 +31,17 @@ const FooterComponent = () => {
         <FooterMenuItem
           image={imgMenu.popultaion}
           title="Population"
-          onClick={() => {}}
+          onClick={togglePanel}
         />
         <FooterMenuItem
           image={imgMenu.food}
           title="Nutrition"
-          onClick={() => {}}
+          onClick={togglePanel}
         />
         <FooterMenuItem
           image={imgMenu.climate}
           title="Climate"
-          onClick={() => {}}
+          onClick={togglePanel}
         />
         <FooterMenuItem
           image={imgMenu.hazard}
