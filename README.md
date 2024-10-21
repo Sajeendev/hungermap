@@ -10,7 +10,7 @@ Explore the live version of the app here: [Hungermap](https://hungermap.s3.eu-so
 
 ### Design Prototype:
 
-View the design prototype of the application in Figma: [Hungermap Design](https://www.figma.com/design/IZ96tAZoaJZjuuvV8AQ6OZ/Hungermap?node-id=1-6&m=dev&t=uRSwTn14bjaIf1v4-1).
+View the design prototype of the application in Figma: [Hungermap Design](https://www.figma.com/design/IZ96tAZoaJZjuuvV8AQ6OZ/Hungermap).
 
 ## Installation
 

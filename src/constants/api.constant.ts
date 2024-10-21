@@ -1,6 +1,6 @@
 export const BASE_URL = 'https://api.hungermapdata.org';
 
-export const CACHE_EXPIRATION = 60 * 60 * 1000;
+export const CACHE_EXPIRATION = 1000 * 60 * 60; // 1 hour
 
 export const queryKeys = {
   getClimateData: 'get-climate-data',
