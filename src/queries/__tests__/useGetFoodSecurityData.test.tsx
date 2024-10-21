@@ -13,6 +13,12 @@ const API_URL = `${BASE_URL}/v1/foodsecurity/country/${Iso3Code}`;
 describe('useGetFoodSecurityByCountry', () => {
   beforeEach(() => {
     vi.resetAllMocks();
+
+    vi.stubGlobal('localStorage', {
+      getItem: vi.fn(),
+      setItem: vi.fn(),
+      removeItem: vi.fn()
+    });
   });
 
   it('should fetch data successfully', async () => {

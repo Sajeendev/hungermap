@@ -12,6 +12,12 @@ const API_URL = `${BASE_URL}/v1/climate/hazards`;
 describe('useGetHazardData', () => {
   beforeEach(() => {
     vi.resetAllMocks();
+
+    vi.stubGlobal('localStorage', {
+      getItem: vi.fn(),
+      setItem: vi.fn(),
+      removeItem: vi.fn()
+    });
   });
 
   it('should fetch data successfully', async () => {

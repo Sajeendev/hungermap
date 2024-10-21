@@ -12,6 +12,12 @@ const API_URL = `${BASE_URL}/v1/ipc/peaks`;
 describe('useGetIpcPeakData', () => {
   beforeEach(() => {
     vi.resetAllMocks();
+
+    vi.stubGlobal('localStorage', {
+      getItem: vi.fn(),
+      setItem: vi.fn(),
+      removeItem: vi.fn()
+    });
   });
 
   it('should fetch data successfully', async () => {

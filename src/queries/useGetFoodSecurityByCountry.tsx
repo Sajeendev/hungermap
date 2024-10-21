@@ -1,5 +1,6 @@
-import { BASE_URL } from '@/constants';
+import { BASE_URL, queryKeys } from '@/constants';
 import { ErrorData, FoodSecurity } from '@/types';
+import { getCachedData, setCachedData } from '@/utils';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -22,6 +23,16 @@ const useGetFoodSecurityByCountry = ({ Iso3Code }: Props) => {
       setLoading(true);
       setError({ message: null, type: null });
 
+      // Construct a dynamic cache key based on the Iso3Code
+      const cacheKey = `${queryKeys.getFoodSecurityByCountry}-${Iso3Code}`;
+      const cachedData = getCachedData(cacheKey);
+
+      if (cachedData) {
+        setData(cachedData);
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(
           `${BASE_URL}/v1/foodsecurity/country/${Iso3Code}`
@@ -31,7 +42,9 @@ const useGetFoodSecurityByCountry = ({ Iso3Code }: Props) => {
           setError({ message: response.data.body.error, type: 'data' });
           setData(null);
         } else if (response?.data?.body) {
-          setData(response.data.body);
+          const responseData = response.data.body;
+          setData(responseData);
+          setCachedData(cacheKey, responseData);
         }
       } catch (err) {
         setError({ message: String(err), type: 'request' });

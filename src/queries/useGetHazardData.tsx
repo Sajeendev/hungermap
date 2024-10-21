@@ -1,5 +1,6 @@
-import { BASE_URL } from '@/constants';
+import { BASE_URL, queryKeys } from '@/constants';
 import { ErrorData, HazardData } from '@/types';
+import { getCachedData, setCachedData } from '@/utils';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -16,6 +17,13 @@ const useGetHazardData = () => {
       setLoading(true);
       setError({ message: null, type: null });
 
+      const cachedData = getCachedData(queryKeys.getHazardData);
+      if (cachedData) {
+        setData(cachedData);
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(`${BASE_URL}/v1/climate/hazards`);
 
@@ -23,7 +31,9 @@ const useGetHazardData = () => {
           setError({ message: response.data.body.error, type: 'data' });
           setData(null);
         } else if (response?.data?.body) {
-          setData(response.data.body);
+          const responseData = response.data.body;
+          setData(responseData);
+          setCachedData(queryKeys.getHazardData, responseData);
         }
       } catch (err) {
         setError({ message: String(err), type: 'request' });

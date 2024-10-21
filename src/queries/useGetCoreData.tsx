@@ -1,5 +1,6 @@
-import { BASE_URL } from '@/constants';
+import { BASE_URL, queryKeys } from '@/constants';
 import { CoreData, ErrorData } from '@/types';
+import { getCachedData, setCachedData } from '@/utils';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -16,6 +17,13 @@ const useGetCoreData = () => {
       setLoading(true);
       setError({ message: null, type: null });
 
+      const cachedData = getCachedData(queryKeys.getCoreData);
+      if (cachedData) {
+        setData(cachedData);
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(`${BASE_URL}/v2/info/country`);
 
@@ -23,7 +31,9 @@ const useGetCoreData = () => {
           setError({ message: response.data.body.error, type: 'data' });
           setData(null);
         } else if (response?.data?.body) {
-          setData(response.data.body);
+          const responseData = response.data.body;
+          setData(responseData);
+          setCachedData(queryKeys.getCoreData, responseData);
         }
       } catch (err) {
         setError({ message: String(err), type: 'request' });
