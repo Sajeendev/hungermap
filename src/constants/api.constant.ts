@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.hungermapdata.org';
+export const BASE_URL = ''; // replace with your API base URL
 
 export const CACHE_EXPIRATION = 1000 * 60 * 60; // 1 hour
 

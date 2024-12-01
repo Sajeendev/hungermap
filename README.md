@@ -2,15 +2,13 @@
 
 ## Description
 
-Hungermap: WFP Assessment
+Hungermap project.
+Add your API URL to api.constants.ts to make it work.
 
-### Live Demo:
+## Technologies
 
-Explore the live version of the app here: [Hungermap](https://hungermap.s3.eu-south-1.amazonaws.com/index.html).
-
-### Design Prototype:
-
-View the design prototype of the application in Figma: [Hungermap Design](https://www.figma.com/design/IZ96tAZoaJZjuuvV8AQ6OZ/Hungermap).
+- NextJs 15
+- Mantine UI
 
 ## Installation
 
